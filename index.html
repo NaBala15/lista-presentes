@@ -1,0 +1,811 @@
+<title>Ana &amp; Rafael</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Karla:wght@400;500;700&display=swap">
+<style>
+/* Layout: foto de casamento ocupando o topo inteiro, carta dos noivos logo abaixo,
+   grade de presentes em cartões de borda fina e mural de recados ao final.
+   Pensado primeiro no celular: uma coluna, alvos de toque grandes, modal cheio. */
+:root{
+  --bg:#F6F8F4;
+  --surface:#FFFFFF;
+  --ink:#1B241E;
+  --ink-soft:#5E6A62;
+  --verde:#2E5D4C;
+  --verde-texto:#FFFFFF;
+  --latao:#99763A;
+  --linha:#D7DED6;
+  --display:"Fraunces",Georgia,"Times New Roman",serif;
+  --corpo:"Karla","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#11150F;
+  --surface:#1A201B;
+  --ink:#E9EDE6;
+  --ink-soft:#9AA69D;
+  --verde:#8CC0AA;
+  --verde-texto:#0E1310;
+  --latao:#D4B472;
+  --linha:#2D362F;
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#11150F;
+  --surface:#1A201B;
+  --ink:#E9EDE6;
+  --ink-soft:#9AA69D;
+  --verde:#8CC0AA;
+  --verde-texto:#0E1310;
+  --latao:#D4B472;
+  --linha:#2D362F;
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--corpo);
+  font-size:16px;
+  line-height:1.6;
+  margin:0;
+}
+.faixa{width:100%}
+.dentro{
+  max-width:62rem;
+  margin-inline:auto;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+}
+
+/* ---------- aviso de demonstração ---------- */
+.demo{background:var(--latao);color:#140F05}
+.demo .dentro{padding-block:.6rem;font-size:.75rem;letter-spacing:.05em;text-transform:uppercase;font-weight:700;text-align:center;line-height:1.5}
+
+/* ---------- topo com foto ---------- */
+/* O topo tem mundo próprio: foto clara, véu escuro por cima, texto branco.
+   Por isso não troca de cor com o tema. */
+.hero{position:relative;isolation:isolate;overflow:hidden}
+.hero-foto{
+  position:absolute;inset:0;z-index:-2;
+  background-image:var(--hero-largo);
+  background-size:cover;
+  background-position:50% 42%;
+  background-repeat:no-repeat;
+  background-color:#2A2F28;
+}
+.hero-veu{
+  position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,rgba(14,18,14,.58) 0%,rgba(14,18,14,.50) 45%,rgba(14,18,14,.80) 100%);
+}
+.hero .dentro{
+  padding-block:clamp(3.5rem,13vh,6rem);
+  text-align:center;
+  min-height:clamp(24rem,64vh,32rem);
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  color:#FFFFFF;
+}
+.monograma{
+  font-family:var(--display);font-size:.78rem;letter-spacing:.42em;
+  text-transform:uppercase;color:#E8CFA0;margin:0 0 1.5rem
+}
+h1{
+  font-family:var(--display);
+  font-optical-sizing:auto;
+  font-weight:400;
+  font-size:clamp(2.7rem,11vw,4.8rem);
+  line-height:1.03;
+  letter-spacing:-.02em;
+  text-wrap:balance;
+  margin:0;
+  color:#FFFFFF;
+  text-shadow:0 1px 24px rgba(10,14,10,.45);
+}
+.quando{margin:1.4rem 0 0;font-size:1.0625rem;color:#F1EFE8}
+.onde{margin:.35rem 0 0;font-size:.9375rem;color:#D8D6CC;max-width:26rem}
+.ornamento{
+  display:flex;align-items:center;justify-content:center;gap:.9rem;
+  margin:2rem auto 0;max-width:13rem;width:100%;color:#E8CFA0
+}
+.ornamento i{flex:1;height:1px;background:currentColor;opacity:.55}
+.ornamento svg{width:13px;height:13px;flex:none}
+@media (max-width:700px){
+  .hero-foto{background-image:var(--hero-alto);background-position:50% 38%}
+}
+
+/* ---------- carta ---------- */
+.carta{border-bottom:1px solid var(--linha)}
+.carta .dentro{padding-block:3.25rem;max-width:40rem;text-align:center}
+.titulo-carta{
+  font-family:var(--display);font-weight:500;
+  font-size:clamp(1.45rem,5.5vw,2.05rem);
+  line-height:1.2;margin:0 0 1.5rem;text-wrap:balance
+}
+.carta p{
+  font-family:var(--display);
+  font-size:clamp(1.0625rem,3.6vw,1.1875rem);line-height:1.74;margin:0;
+  font-style:italic;font-weight:400;
+}
+.assinatura{
+  display:block;margin-top:1.5rem;font-style:normal;
+  font-size:.8125rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--latao);font-family:var(--corpo);font-weight:700
+}
+.aviso-geral{
+  margin:2.25rem auto 0;max-width:34rem;
+  border-top:1px solid var(--linha);padding-top:1.5rem;
+  font-size:.9375rem;color:var(--ink-soft);font-style:normal;font-family:var(--corpo)
+}
+
+/* ---------- como funciona ---------- */
+.passos .dentro{padding-block:3rem 1rem}
+.passos ol{
+  list-style:none;margin:0;padding:0;
+  display:grid;gap:1.6rem;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr))
+}
+.passos li{min-width:0;display:flex;gap:1rem;align-items:flex-start}
+.num{
+  flex:none;width:2rem;height:2rem;border-radius:50%;
+  border:1px solid var(--latao);color:var(--latao);
+  display:grid;place-items:center;
+  font-family:var(--display);font-size:.9375rem;
+  font-variant-numeric:tabular-nums
+}
+.passos b{display:block;font-size:.9375rem;letter-spacing:.01em}
+.passos span{display:block;font-size:.875rem;color:var(--ink-soft);margin-top:.15rem}
+
+/* ---------- grade de presentes ---------- */
+.lista .dentro{padding-block:2.5rem 3.5rem}
+.titulo-secao{
+  font-family:var(--display);font-weight:500;
+  font-size:clamp(1.5rem,4vw,2rem);margin:0 0 .4rem;text-wrap:balance
+}
+.sub-secao{margin:0 0 1.5rem;color:var(--ink-soft);font-size:.9375rem;max-width:36rem}
+.filtros{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1.75rem;padding:0;list-style:none}
+.filtro{
+  background:none;border:1px solid var(--linha);border-radius:999px;
+  padding:.6rem 1rem;min-height:2.75rem;
+  font:inherit;font-size:.875rem;font-weight:500;
+  color:var(--ink-soft);cursor:pointer;white-space:nowrap
+}
+.filtro[aria-pressed="true"]{
+  border-color:var(--verde);background:var(--verde);color:var(--verde-texto);font-weight:700
+}
+.filtro:focus-visible{outline:2px solid var(--verde);outline-offset:2px}
+.grade{
+  list-style:none;margin:0;padding:0;
+  display:grid;gap:1.125rem;
+  grid-template-columns:repeat(auto-fill,minmax(15.5rem,1fr))
+}
+.cartao{
+  width:100%;min-width:0;
+  background:var(--surface);
+  border:1px solid var(--linha);
+  border-radius:3px;
+  padding:1.5rem 1.375rem 1.25rem;
+  display:flex;flex-direction:column;gap:.75rem;
+  text-align:left;
+  font:inherit;color:inherit;
+  cursor:pointer;
+  transition:border-color .18s ease,transform .18s ease;
+}
+.cartao:hover{border-color:var(--verde);transform:translateY(-2px)}
+.cartao:focus-visible{outline:2px solid var(--verde);outline-offset:3px}
+.cartao svg{width:42px;height:42px;color:var(--verde);flex:none}
+.nome-presente{
+  font-family:var(--display);font-size:1.1875rem;font-weight:500;
+  line-height:1.25;margin:0;text-wrap:balance
+}
+.texto-presente{font-size:.875rem;color:var(--ink-soft);margin:0;flex:1}
+.rodape-cartao{
+  display:flex;align-items:baseline;justify-content:space-between;gap:.75rem;
+  border-top:1px solid var(--linha);padding-top:.75rem;margin-top:.25rem
+}
+.valor{
+  font-family:var(--display);font-size:1.0625rem;font-weight:600;
+  font-variant-numeric:tabular-nums;white-space:nowrap
+}
+.valor small{font-weight:400;font-size:.8125rem;color:var(--ink-soft)}
+.deram{font-size:.75rem;color:var(--latao);text-align:right;line-height:1.35}
+
+/* ---------- mural ---------- */
+.mural{border-top:1px solid var(--linha);background:var(--surface)}
+.mural .dentro{padding-block:3.5rem}
+.recados{
+  list-style:none;margin:0;padding:0;
+  display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fill,minmax(17rem,1fr))
+}
+.recados li{min-width:0;border-left:2px solid var(--latao);padding-left:1.125rem}
+.recados p{margin:0;font-family:var(--display);font-style:italic;font-size:1.0625rem;line-height:1.6}
+.recados cite{
+  display:block;margin-top:.6rem;font-style:normal;font-size:.8125rem;
+  color:var(--ink-soft);font-family:var(--corpo)
+}
+.recados cite b{color:var(--ink);font-weight:700}
+
+footer .dentro{padding-block:2.5rem 3rem;text-align:center;font-size:.8125rem;color:var(--ink-soft)}
+footer a{color:var(--latao)}
+
+/* ---------- modal ---------- */
+.fundo{
+  position:fixed;inset:0;z-index:50;
+  background:rgba(10,14,11,.65);
+  display:grid;place-items:center;
+  padding-left:max(12px,env(safe-area-inset-left,0px));
+  padding-right:max(12px,env(safe-area-inset-right,0px));
+  padding-top:max(12px,env(safe-area-inset-top,0px));
+  padding-bottom:max(12px,env(safe-area-inset-bottom,0px));
+  overflow-y:auto;
+}
+.modal{
+  background:var(--surface);
+  border:1px solid var(--linha);
+  border-radius:4px;
+  width:min(29rem,100%);
+  max-height:100%;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  padding:1.5rem 1.375rem 1.5rem;
+}
+.topo-modal{
+  display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;
+  position:sticky;top:-1.5rem;background:var(--surface);
+  padding:1.5rem 0 .75rem;margin:-1.5rem 0 0;z-index:2
+}
+.topo-modal h3{
+  font-family:var(--display);font-weight:500;font-size:1.375rem;
+  margin:0;line-height:1.2;text-wrap:balance
+}
+.fechar{
+  flex:none;background:none;border:1px solid var(--linha);border-radius:50%;
+  width:2.75rem;height:2.75rem;color:var(--ink-soft);font-size:1.25rem;line-height:1;
+  cursor:pointer
+}
+.fechar:hover{border-color:var(--verde);color:var(--ink)}
+.campo{display:block;margin-top:1rem}
+.campo span{
+  display:block;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-soft);margin-bottom:.4rem;font-weight:700
+}
+.campo input,.campo textarea,.campo select{
+  width:100%;font:inherit;font-size:1rem;color:var(--ink);
+  background:var(--bg);border:1px solid var(--linha);border-radius:3px;
+  padding:.7rem .75rem;min-height:2.875rem
+}
+.campo textarea{min-height:4.5rem;resize:vertical}
+.campo input:focus,.campo textarea:focus,.campo select:focus{outline:2px solid var(--verde);outline-offset:1px}
+.total{
+  display:flex;align-items:baseline;justify-content:space-between;
+  border-top:1px solid var(--linha);margin-top:1.25rem;padding-top:1rem;gap:1rem
+}
+.total span{font-size:.8125rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);font-weight:700}
+.total strong{font-family:var(--display);font-size:1.5rem;font-variant-numeric:tabular-nums}
+.botao{
+  display:block;width:100%;margin-top:1rem;
+  background:var(--verde);color:var(--verde-texto);
+  border:1px solid var(--verde);border-radius:3px;
+  padding:.95rem 1rem;min-height:3rem;
+  font:inherit;font-weight:700;font-size:.9375rem;letter-spacing:.02em;
+  text-align:center;text-decoration:none;cursor:pointer
+}
+.botao:hover{opacity:.9}
+.botao.secundario{background:none;border-color:var(--linha);color:var(--ink);font-weight:500}
+.botao.secundario:hover{border-color:var(--verde);opacity:1}
+.botao[disabled],.botao[aria-disabled="true"]{opacity:.5;cursor:not-allowed}
+.botao[aria-disabled="true"]:hover{border-color:var(--linha);opacity:.5}
+
+/* ---------- pagamento ---------- */
+.aviso-demo{
+  background:var(--bg);
+  border:1px solid var(--latao);border-radius:3px;
+  padding:.75rem .85rem;font-size:.8125rem;margin-top:1rem;color:var(--ink);line-height:1.55
+}
+.qr{
+  background:#FFFFFF;border-radius:3px;padding:.9rem;
+  width:max-content;max-width:100%;margin:1.25rem auto 0;
+  display:grid;place-items:center
+}
+.qr canvas,.qr img{display:block;max-width:100%;height:auto}
+.copiacola{
+  margin-top:1rem;background:var(--bg);border:1px solid var(--linha);border-radius:3px;
+  padding:.7rem;font-family:ui-monospace,"Cascadia Code",Consolas,monospace;
+  font-size:.6875rem;line-height:1.5;word-break:break-all;color:var(--ink-soft);
+  max-height:6rem;overflow-y:auto
+}
+.dica{font-size:.8125rem;color:var(--ink-soft);margin:1rem 0 0;text-align:center;line-height:1.55}
+.abas{display:flex;gap:.5rem;margin-top:.75rem}
+.aba{
+  flex:1;background:none;border:1px solid var(--linha);border-radius:3px;
+  padding:.7rem;min-height:2.75rem;
+  font:inherit;font-size:.9375rem;font-weight:500;color:var(--ink-soft);cursor:pointer
+}
+.aba[aria-selected="true"]{border-color:var(--verde);color:var(--ink);background:var(--bg);font-weight:700}
+.parcela-linha{
+  display:flex;align-items:baseline;justify-content:space-between;gap:1rem;
+  border-top:1px solid var(--linha);margin-top:1rem;padding-top:1rem
+}
+.parcela-linha span{font-size:.8125rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);font-weight:700}
+.parcela-linha strong{font-family:var(--display);font-size:1.25rem;font-variant-numeric:tabular-nums}
+.recebe{font-size:.8125rem;color:var(--ink-soft);margin:.75rem 0 0;line-height:1.55}
+.cartao-aviso{font-size:.875rem;color:var(--ink-soft);margin:1rem 0 0;line-height:1.65}
+
+@media (max-width:560px){
+  .modal{
+    width:100%;max-height:none;min-height:100%;
+    border:none;border-radius:0;padding:1.25rem 1.125rem 2rem
+  }
+  .fundo{padding:0;place-items:stretch}
+  .topo-modal{top:-1.25rem;padding-top:1.25rem;margin-top:-1.25rem}
+  .lista .dentro{padding-block:2rem 2.5rem}
+  .mural .dentro,.carta .dentro{padding-block:2.5rem}
+  .recados{gap:1.25rem}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="dados.js"></script>
+
+<div class="faixa demo" id="faixa-demo" hidden><div class="dentro">Demonstração · nomes fictícios e chave Pix de exemplo, que não recebe dinheiro</div></div>
+
+<header class="faixa hero">
+  <div class="hero-foto" aria-hidden="true"></div>
+  <div class="hero-veu" aria-hidden="true"></div>
+  <div class="dentro">
+    <p class="monograma" id="monograma"></p>
+    <h1 id="nomes"></h1>
+    <p class="quando" id="quando"></p>
+    <p class="onde" id="onde"></p>
+    <div class="ornamento" aria-hidden="true">
+      <i></i>
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.2H22l-6.2 4.5 2.4 7.3L12 16.5 5.8 21l2.4-7.3L2 9.2h7.6z"/></svg>
+      <i></i>
+    </div>
+  </div>
+</header>
+
+<section class="faixa carta"><div class="dentro">
+  <h2 class="titulo-carta" id="titulo-carta"></h2>
+  <p id="recado"></p>
+  <span class="assinatura" id="assinatura"></span>
+  <p class="aviso-geral" id="aviso-geral" hidden></p>
+</div></section>
+
+<section class="faixa passos"><div class="dentro">
+  <ol>
+    <li><div class="num">1</div><div><b>Escolha um presente</b><span>Toque no que mais combinar com vocês dois.</span></div></li>
+    <li><div class="num">2</div><div><b>Pague pelo Pix</b><span>O valor já vem no QR Code. Cai direto na conta do casal.</span></div></li>
+    <li><div class="num">3</div><div><b>Deixe um recado</b><span>Ele vai pro mural que os noivos leem depois.</span></div></li>
+  </ol>
+</div></section>
+
+<section class="faixa lista"><div class="dentro">
+  <h2 class="titulo-secao">A lista</h2>
+  <p class="sub-secao">Tem presente de noventa reais e tem presente de quase quatro mil. Escolha pelo carinho, não pelo valor. E nenhum item acaba: se mais de uma pessoa escolher o mesmo, está tudo certo.</p>
+  <div class="filtros" role="group" aria-label="Filtrar por faixa de preço">
+    <button class="filtro" type="button" data-min="0" data-max="999999" aria-pressed="true">Todos</button>
+    <button class="filtro" type="button" data-min="0" data-max="300" aria-pressed="false">Até R$ 300</button>
+    <button class="filtro" type="button" data-min="300" data-max="1000" aria-pressed="false">R$ 300 a R$ 1.000</button>
+    <button class="filtro" type="button" data-min="1000" data-max="999999" aria-pressed="false">Acima de R$ 1.000</button>
+  </div>
+  <ul class="grade" id="grade"></ul>
+</div></section>
+
+<section class="faixa mural"><div class="dentro">
+  <h2 class="titulo-secao">Mural de recados</h2>
+  <p class="sub-secao">O que já chegou até agora.</p>
+  <ul class="recados" id="mural"></ul>
+</div></section>
+
+<footer class="faixa"><div class="dentro">
+  <p>Página criada e mantida por <a href="https://jeffcompany.com.br">Jeff Company</a></p>
+</div></footer>
+
+<div class="fundo" id="fundo" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
+    <div class="topo-modal">
+      <h3 id="modal-titulo"></h3>
+      <button class="fechar" id="btn-fechar" type="button" aria-label="Fechar">&times;</button>
+    </div>
+
+    <div class="abas" role="tablist">
+      <button class="aba" id="aba-pix" type="button" role="tab" aria-selected="true">Pix</button>
+      <button class="aba" id="aba-cartao" type="button" role="tab" aria-selected="false">Cartão</button>
+    </div>
+
+    <div id="bloco-cotas" hidden>
+      <label class="campo" for="cotas"><span>Quantas cotas</span>
+        <select id="cotas"></select>
+      </label>
+    </div>
+    <div id="bloco-livre" hidden>
+      <label class="campo" for="valor-livre"><span>Valor da contribuição</span>
+        <input type="number" id="valor-livre" min="10" step="10" inputmode="decimal">
+      </label>
+    </div>
+
+    <div id="painel-pix">
+      <label class="campo" for="de"><span>Seu nome</span>
+        <input type="text" id="de" placeholder="Como os noivos te conhecem" autocomplete="name">
+      </label>
+      <label class="campo" for="mensagem"><span>Recado para o casal (opcional)</span>
+        <textarea id="mensagem" placeholder="Um voto, uma piada interna, o que vier."></textarea>
+      </label>
+
+      <div class="total"><span>Total</span><strong id="total"></strong></div>
+
+      <div class="aviso-demo" id="aviso-demo" hidden></div>
+
+      <div class="qr" id="qr"></div>
+      <div class="copiacola" id="copiacola"></div>
+      <button class="botao" id="btn-copiar" type="button">Copiar código Pix</button>
+      <button class="botao secundario" id="btn-avisar" type="button">Já enviei, avisar os noivos</button>
+      <p class="dica">Abra o app do banco, escolha Pix · Pagar com QR Code ou Pix copia e cola.</p>
+    </div>
+
+    <div id="painel-cartao" hidden>
+      <label class="campo" for="parcelas"><span>Em quantas vezes</span>
+        <select id="parcelas"></select>
+      </label>
+      <div class="parcela-linha"><span>Fica em</span><strong id="valor-parcela"></strong></div>
+      <p class="recebe" id="recebe"></p>
+      <a class="botao" id="btn-cartao" href="#" rel="noopener">Pagar com cartão</a>
+      <p class="cartao-aviso" id="texto-cartao"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var D = window.CASAMENTO;
+  if(!D){ return; }
+
+  /* ---------- ícones desenhados em SVG, sem depender de foto externa ---------- */
+  var T = 'stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"';
+  var ICONES = {
+    livro:'<path d="M8 10h12a4 4 0 0 1 4 4v24a4 4 0 0 0-4-4H8z" '+T+'/><path d="M40 10H28a4 4 0 0 0-4 4v24a4 4 0 0 1 4-4h12z" '+T+'/>',
+    cinema:'<rect x="7" y="13" width="34" height="22" rx="2.5" '+T+'/><path d="M16 13v22M32 13v22M7 19h9M7 29h9M32 19h9M32 29h9" '+T+'/>',
+    vinho:'<path d="M20 6h8v8l3 6v21a2 2 0 0 1-2 2H19a2 2 0 0 1-2-2V20l3-6z" '+T+'/><path d="M17 27h14" '+T+'/>',
+    planta:'<path d="M17 41h14l-1.5-13h-11z" '+T+'/><path d="M24 28c0-6-4-10-9-10 0 6 4 10 9 10zM24 28c0-7 4-12 10-12 0 7-4 12-10 12z" '+T+'/>',
+    tacas:'<path d="M9 8h12l-2 9a4 4 0 0 1-8 0zM15 22v16M11 40h8" '+T+'/><path d="M27 8h12l-2 9a4 4 0 0 1-8 0zM33 22v16M29 40h8" '+T+'/>',
+    toalhas:'<rect x="9" y="11" width="30" height="8" rx="4" '+T+'/><rect x="9" y="21" width="30" height="8" rx="4" '+T+'/><rect x="9" y="31" width="30" height="8" rx="4" '+T+'/>',
+    ferro:'<path d="M7 32c0-8 7-14 16-14h17v6c0 4-3 8-8 8z" '+T+'/><path d="M7 37h33M28 18v-4h7" '+T+'/>',
+    abajur:'<path d="M16 9h16l5 15H11z" '+T+'/><path d="M24 24v15M16 41h16" '+T+'/>',
+    liquidificador:'<path d="M17 7h15l-2 19H19z" '+T+'/><path d="M14 26h21v7a4 4 0 0 1-4 4H18a4 4 0 0 1-4-4z" '+T+'/><path d="M19 37v4h11v-4" '+T+'/>',
+    jantar:'<circle cx="18" cy="27" r="11" '+T+'/><circle cx="18" cy="27" r="5" '+T+'/><path d="M33 8h7l-1.4 9.5a2.2 2.2 0 0 1-4.3 0zM36.5 19.5V39M33 39h7" '+T+'/>',
+    cafeteira:'<path d="M9 16h21v12a10.5 10.5 0 0 1-21 0z" '+T+'/><path d="M30 19h4a5 5 0 0 1 0 10h-4" '+T+'/><path d="M7 41h25" '+T+'/>',
+    ventilador:'<circle cx="24" cy="19" r="12" '+T+'/><circle cx="24" cy="19" r="2.6" '+T+'/><path d="M24 16.4c0-6-3-9-8-8 1 5 4 8 8 8zM26.6 19c5-2 7-6 5-10-4 2-6 6-5 10zM21.4 21.6c-4 3-5 8-2 11 3-3 4-8 2-11z" '+T+'/><path d="M24 31v9M18 42h12" '+T+'/>',
+    faqueiro:'<path d="M15 7v9a3 3 0 0 0 6 0V7M18 19v22" '+T+'/><path d="M31 41V22c3.5-1 5-4 5-8 0-3-1.5-6-5-7" '+T+'/>',
+    spa:'<circle cx="24" cy="24" r="4" '+T+'/><path d="M24 20c0-6 2-10 0-14-2 4 0 8 0 14zM28 24c6 0 10 2 14 0-4-2-8 0-14 0zM24 28c0 6-2 10 0 14 2-4 0-8 0-14zM20 24c-6 0-10-2-14 0 4 2 8 0 14 0z" '+T+'/>',
+    cama:'<path d="M6 37V20M42 37v-9a4 4 0 0 0-4-4H20v8" '+T+'/><rect x="9" y="16" width="9" height="8" rx="2.5" '+T+'/><path d="M6 32h36" '+T+'/>',
+    airfryer:'<rect x="13" y="9" width="22" height="31" rx="4" '+T+'/><path d="M13 28h22M21 34h6" '+T+'/><circle cx="28" cy="17" r="2.8" '+T+'/>',
+    tapete:'<path d="M6 17h36l-4 19H10z" '+T+'/><path d="M10 36l-2 5M38 36l2 5M18 19v15M30 19v15" '+T+'/>',
+    microondas:'<rect x="5" y="14" width="38" height="21" rx="2.5" '+T+'/><rect x="9" y="18" width="20" height="13" rx="1.5" '+T+'/><circle cx="36" cy="20.5" r="1.4" fill="currentColor"/><path d="M33 29h6" '+T+'/>',
+    churrasqueira:'<path d="M8 17h32a16 16 0 0 1-32 0z" '+T+'/><path d="M14 30l-5 11M34 30l5 11M24 33v8" '+T+'/>',
+    panelas:'<path d="M9 21h26v6a13 13 0 0 1-26 0z" '+T+'/><path d="M35 23h7M6 18h32" '+T+'/>',
+    aspirador:'<path d="M12 39a9 9 0 0 1 0-18h13v18z" '+T+'/><circle cx="14" cy="34" r="2.6" '+T+'/><path d="M25 26c8 0 6-16 13-16" '+T+'/>',
+    fogao:'<path d="M13 13h22v4" '+T+'/><rect x="9" y="17" width="30" height="24" rx="2.5" '+T+'/><circle cx="18" cy="25" r="3.4" '+T+'/><circle cx="30" cy="25" r="3.4" '+T+'/><circle cx="18" cy="34" r="3.4" '+T+'/><circle cx="30" cy="34" r="3.4" '+T+'/>',
+    tv:'<rect x="5" y="11" width="38" height="23" rx="2.5" '+T+'/><path d="M18 41h12M24 34v7" '+T+'/>',
+    lavadora:'<rect x="10" y="6" width="28" height="36" rx="3" '+T+'/><circle cx="24" cy="27" r="8" '+T+'/><path d="M10 17h28" '+T+'/><circle cx="16" cy="11.5" r="1.3" fill="currentColor"/><circle cx="21" cy="11.5" r="1.3" fill="currentColor"/>',
+    geladeira:'<rect x="14" y="5" width="20" height="38" rx="2.5" '+T+'/><path d="M14 19h20M29.5 11v5M29.5 23v5" '+T+'/>',
+    sofa:'<path d="M9 23v-5a4 4 0 0 1 4-4h22a4 4 0 0 1 4 4v5" '+T+'/><path d="M9 23a4 4 0 0 0 0 8v6h30v-6a4 4 0 0 0 0-8" '+T+'/><path d="M15 31h18" '+T+'/>',
+    viagem:'<path d="M22 7a3 3 0 0 1 3 3v11l16 7v4l-16-3.5V36l5 4v3l-8-2.5L14 43v-3l5-4v-7.5L3 32v-4l16-7V10a3 3 0 0 1 3-3z" '+T+'/>'
+  };
+  function icone(k){
+    return '<svg viewBox="0 0 48 48" aria-hidden="true">'+(ICONES[k]||ICONES.jantar)+'</svg>';
+  }
+
+  /* ---------- Pix: BR Code EMV + CRC16-CCITT ---------- */
+  function crc16(s){
+    var c=0xFFFF,i,j;
+    for(i=0;i<s.length;i++){
+      c^=s.charCodeAt(i)<<8;
+      for(j=0;j<8;j++) c = (c&0x8000) ? ((c<<1)^0x1021)&0xFFFF : (c<<1)&0xFFFF;
+    }
+    return c.toString(16).toUpperCase().padStart(4,"0");
+  }
+  function campo(id,v){ return id + String(v.length).padStart(2,"0") + v; }
+  var ACENTOS = new RegExp("[\\u0300-\\u036f]", "g");
+  function limpar(t,max){
+    return String(t||"").normalize("NFD").replace(ACENTOS,"")
+      .toUpperCase().replace(/[^A-Z0-9 ]/g,"").trim().slice(0,max);
+  }
+  function montarPix(valor,txid){
+    var conta = campo("26", campo("00","br.gov.bcb.pix") + campo("01", D.pix.chave));
+    var p = campo("00","01") + conta + campo("52","0000") + campo("53","986");
+    if(valor > 0) p += campo("54", valor.toFixed(2));
+    p += campo("58","BR") + campo("59", limpar(D.pix.nome,25)) + campo("60", limpar(D.pix.cidade,15));
+    p += campo("62", campo("05", String(txid||"***").replace(/[^A-Za-z0-9]/g,"").slice(0,25) || "***"));
+    p += "6304";
+    return p + crc16(p);
+  }
+
+  var moeda = new Intl.NumberFormat("pt-BR",{style:"currency",currency:"BRL"});
+
+  /* ---------- topo e textos ---------- */
+  function texto(id,v){ var e=document.getElementById(id); if(e) e.textContent=v; }
+  var raiz = document.documentElement;
+  if(D.hero){
+    if(D.hero.largo) raiz.style.setProperty("--hero-largo", 'url("'+D.hero.largo+'")');
+    if(D.hero.alto)  raiz.style.setProperty("--hero-alto",  'url("'+D.hero.alto+'")');
+  }
+  var iniciais = D.noivos.split("&").map(function(n){ return n.trim().charAt(0); }).join(" · ");
+  texto("monograma", iniciais || "Convite");
+  texto("nomes", D.noivos);
+  texto("quando", D.data);
+  texto("onde", D.local);
+  texto("titulo-carta", D.tituloCarta || "");
+  texto("recado", D.recado);
+  texto("assinatura", D.assinatura || D.noivos);
+  if(D.aviso){
+    var av = document.getElementById("aviso-geral");
+    av.textContent = D.aviso;
+    av.hidden = false;
+  }
+  if(D.demonstracao) document.getElementById("faixa-demo").hidden = false;
+
+  /* ---------- grade ---------- */
+  var grade = document.getElementById("grade");
+  var itens = [];
+  D.presentes.forEach(function(p,i){
+    var li = document.createElement("li");
+    var b = document.createElement("button");
+    b.className = "cartao";
+    b.type = "button";
+    b.dataset.i = i;
+    var quantos = p.deram > 0
+      ? (p.deram === 1 ? "1 pessoa já escolheu" : p.deram + " pessoas já escolheram")
+      : "seja o primeiro";
+    b.innerHTML =
+      icone(p.icone) +
+      '<h3 class="nome-presente"></h3>' +
+      '<p class="texto-presente"></p>' +
+      '<div class="rodape-cartao"><div class="valor"></div><div class="deram"></div></div>';
+    b.querySelector(".nome-presente").textContent = p.nome;
+    b.querySelector(".texto-presente").textContent = p.texto || "";
+    b.querySelector(".valor").innerHTML = moeda.format(p.valor) + (p.cota ? ' <small>a cota</small>' : '');
+    b.querySelector(".deram").textContent = quantos;
+    li.appendChild(b);
+    grade.appendChild(li);
+    itens.push({ li: li, valor: p.valor });
+  });
+
+  /* ---------- filtro por faixa de preço ---------- */
+  var filtros = Array.prototype.slice.call(document.querySelectorAll(".filtro"));
+  filtros.forEach(function(f){
+    f.addEventListener("click", function(){
+      filtros.forEach(function(o){ o.setAttribute("aria-pressed", o === f ? "true" : "false"); });
+      var min = parseFloat(f.dataset.min), max = parseFloat(f.dataset.max);
+      itens.forEach(function(it){ it.li.hidden = !(it.valor >= min && it.valor < max); });
+    });
+  });
+
+  /* ---------- mural ---------- */
+  var mural = document.getElementById("mural");
+  function addRecado(de, presente, msg, noInicio){
+    var li = document.createElement("li");
+    var p = document.createElement("p");
+    p.textContent = String.fromCharCode(8220) + msg + String.fromCharCode(8221);
+    var c = document.createElement("cite");
+    var b = document.createElement("b");
+    b.textContent = de;
+    c.appendChild(b);
+    c.appendChild(document.createTextNode(" · " + presente));
+    li.appendChild(p); li.appendChild(c);
+    if(noInicio && mural.firstChild) mural.insertBefore(li, mural.firstChild);
+    else mural.appendChild(li);
+  }
+  (D.recados||[]).forEach(function(r){ addRecado(r.de, r.presente, r.texto, false); });
+
+  /* ---------- modal ---------- */
+  var fundo = document.getElementById("fundo");
+  var atual = null, ultimoFoco = null;
+
+  var elTitulo = document.getElementById("modal-titulo");
+  var elTotal = document.getElementById("total");
+  var elQr = document.getElementById("qr");
+  var elCopia = document.getElementById("copiacola");
+  var elCotas = document.getElementById("cotas");
+  var elLivre = document.getElementById("valor-livre");
+  var blocoCotas = document.getElementById("bloco-cotas");
+  var blocoLivre = document.getElementById("bloco-livre");
+  var avisoDemo = document.getElementById("aviso-demo");
+  var btnCopiar = document.getElementById("btn-copiar");
+  var elParcelas = document.getElementById("parcelas");
+  var elValorParcela = document.getElementById("valor-parcela");
+  var elRecebe = document.getElementById("recebe");
+  var btnCartao = document.getElementById("btn-cartao");
+  var cfgCartao = D.cartao || { ativo:false, valorMinimo:500, parcelas:12, taxa:4 };
+  var abasEl = document.querySelector(".abas");
+
+  /* O cartão só entra em presente caro, e com valor fixo: o link de pagamento
+     é criado com o valor exato daquele item, então valor livre e cotas ficam
+     só no Pix. */
+  function cartaoDisponivel(){
+    if(!cfgCartao.ativo || !atual || atual.cota) return false;
+    return atual.valor >= (parseFloat(cfgCartao.valorMinimo) || 0);
+  }
+
+  function valorAtual(){
+    if(!atual) return 0;
+    if(atual.cota) return atual.valor * (parseInt(elCotas.value,10) || 1);
+    var v = parseFloat(elLivre.value);
+    return (v > 0) ? v : atual.valor;
+  }
+
+  function desenharPix(){
+    var v = valorAtual();
+    elTotal.textContent = moeda.format(v);
+    var codigo = montarPix(v, "CASAMENTO" + (D.presentes.indexOf(atual)+1));
+    elCopia.textContent = codigo;
+    elQr.innerHTML = "";
+    if(window.QRCode){
+      new window.QRCode(elQr, {
+        text: codigo, width: 196, height: 196,
+        colorDark:"#1B241E", colorLight:"#FFFFFF",
+        correctLevel: window.QRCode.CorrectLevel.M
+      });
+    } else {
+      var aviso = document.createElement("p");
+      aviso.style.cssText = "margin:0;color:#1B241E;font-size:.8125rem;max-width:12rem;text-align:center";
+      aviso.textContent = "Use o código copia e cola abaixo.";
+      elQr.appendChild(aviso);
+    }
+    btnCopiar.textContent = "Copiar código Pix";
+  }
+
+  function desenharCartao(){
+    var v = atual ? atual.valor : 0;   /* no cartão o valor é sempre o do presente */
+    var maxP = Math.max(1, parseInt(cfgCartao.parcelas,10) || 12);
+    var escolhida = parseInt(elParcelas.value,10) || 1;
+    if(elParcelas.options.length !== maxP){
+      elParcelas.innerHTML = "";
+      for(var n=1;n<=maxP;n++){
+        var o = document.createElement("option");
+        o.value = n;
+        o.textContent = n === 1 ? "À vista" : (n + "x");
+        elParcelas.appendChild(o);
+      }
+      escolhida = Math.min(escolhida, maxP);
+      elParcelas.value = escolhida;
+    }
+    elValorParcela.textContent = escolhida === 1
+      ? moeda.format(v)
+      : escolhida + "x de " + moeda.format(v / escolhida);
+
+    var taxa = parseFloat(cfgCartao.taxa) || 0;
+    elRecebe.textContent = "Você paga " + moeda.format(v)
+      + ". Descontada a taxa da operadora de " + String(taxa).replace(".", ",")
+      + "%, o casal recebe " + moeda.format(v * (1 - taxa/100))
+      + ". No Pix não há taxa nenhuma e o valor cai na hora.";
+
+    var link = atual && atual.link;
+    if(link){
+      btnCartao.href = link;
+      btnCartao.target = "_blank";
+      btnCartao.removeAttribute("aria-disabled");
+      btnCartao.classList.remove("secundario");
+      document.getElementById("texto-cartao").textContent =
+        "Você vai para a página segura do banco, onde escolhe a bandeira e finaliza o pagamento. "
+        + "No cartão o valor é o do presente; para contribuir com outro valor, use o Pix.";
+    } else {
+      btnCartao.removeAttribute("href");
+      btnCartao.setAttribute("aria-disabled","true");
+      btnCartao.classList.add("secundario");
+      document.getElementById("texto-cartao").textContent =
+        "Nesta demonstração o cartão ainda não está ligado. Para ativar, o casal gera no próprio "
+        + "banco um link de pagamento com o valor deste presente e esse link entra aqui. "
+        + "A partir daí o convidado parcela normalmente, e o valor cai na conta do casal em alguns dias.";
+    }
+  }
+
+  function abrir(i){
+    atual = D.presentes[i];
+    ultimoFoco = document.activeElement;
+    elTitulo.textContent = atual.nome;
+
+    blocoCotas.hidden = !atual.cota;
+    blocoLivre.hidden = !!atual.cota;
+    if(atual.cota){
+      elCotas.innerHTML = "";
+      for(var n=1;n<=10;n++){
+        var o = document.createElement("option");
+        o.value = n;
+        o.textContent = n + (n===1 ? " cota" : " cotas") + " · " + moeda.format(atual.valor*n);
+        elCotas.appendChild(o);
+      }
+      elCotas.value = 1;
+    } else {
+      elLivre.value = atual.valor;
+    }
+
+    if(D.demonstracao){
+      avisoDemo.hidden = false;
+      avisoDemo.textContent = "Demonstração: o QR Code abaixo é um Pix válido e abre no app do banco, "
+        + "mas aponta para a chave de exemplo " + D.pix.chave + ". Na versão final entra a chave dos noivos.";
+    }
+
+    elParcelas.innerHTML = "";
+    abasEl.hidden = !cartaoDisponivel();
+    mostrarAba("pix");
+    desenharPix();
+    fundo.hidden = false;
+    document.getElementById("btn-fechar").focus();
+  }
+
+  function fechar(){
+    fundo.hidden = true;
+    atual = null;
+    if(ultimoFoco && ultimoFoco.focus) ultimoFoco.focus();
+  }
+
+  function mostrarAba(qual){
+    var pix = qual === "pix";
+    document.getElementById("aba-pix").setAttribute("aria-selected", String(pix));
+    document.getElementById("aba-cartao").setAttribute("aria-selected", String(!pix));
+    document.getElementById("painel-pix").hidden = !pix;
+    document.getElementById("painel-cartao").hidden = pix;
+    /* o valor livre é coisa do Pix: no cartão o link já vem com o valor fechado */
+    if(atual){
+      blocoCotas.hidden = !(pix && atual.cota);
+      blocoLivre.hidden = !(pix && !atual.cota);
+    }
+    if(!pix) desenharCartao();
+  }
+
+  function recalcular(){
+    if(document.getElementById("painel-pix").hidden) desenharCartao();
+    else desenharPix();
+  }
+
+  grade.addEventListener("click", function(e){
+    var b = e.target.closest(".cartao");
+    if(b) abrir(parseInt(b.dataset.i,10));
+  });
+  document.getElementById("btn-fechar").addEventListener("click", fechar);
+  fundo.addEventListener("click", function(e){ if(e.target === fundo) fechar(); });
+  document.addEventListener("keydown", function(e){ if(e.key === "Escape" && !fundo.hidden) fechar(); });
+  document.getElementById("aba-pix").addEventListener("click", function(){ mostrarAba("pix"); });
+  document.getElementById("aba-cartao").addEventListener("click", function(){ mostrarAba("cartao"); });
+  elCotas.addEventListener("change", recalcular);
+  elLivre.addEventListener("input", recalcular);
+  elParcelas.addEventListener("change", desenharCartao);
+  btnCartao.addEventListener("click", function(e){
+    if(btnCartao.getAttribute("aria-disabled") === "true") e.preventDefault();
+  });
+
+  btnCopiar.addEventListener("click", function(){
+    var txt = elCopia.textContent;
+    function selecionar(){
+      try{
+        var r = document.createRange();
+        r.selectNodeContents(elCopia);
+        var s = window.getSelection();
+        s.removeAllRanges(); s.addRange(r);
+        btnCopiar.textContent = "Código selecionado · use Ctrl+C";
+      }catch(err){
+        btnCopiar.textContent = "Selecione o código acima";
+      }
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(function(){
+        btnCopiar.textContent = "Código copiado";
+      }).catch(selecionar);
+    } else selecionar();
+  });
+
+  document.getElementById("btn-avisar").addEventListener("click", function(){
+    var de = document.getElementById("de").value.trim();
+    var msg = document.getElementById("mensagem").value.trim();
+    addRecado(de || "Convidado", atual ? atual.nome : "", msg || "Parabéns aos noivos!", true);
+    fechar();
+    document.getElementById("de").value = "";
+    document.getElementById("mensagem").value = "";
+  });
+})();
+</script>
